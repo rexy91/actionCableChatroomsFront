@@ -62,7 +62,7 @@ export class App extends Component{
   render(){
   return (
     <div className="App">
-        <Navbar/>
+        <Navbar currentUser={this.state.currentUser}/>
         <Switch>
           <Route exact path = '/' component = { LoginSignupSelection }/>
           <Route path = '/signup' component = { Signup }/>
