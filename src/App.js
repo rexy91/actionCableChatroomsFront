@@ -4,15 +4,16 @@ import { withRouter } from 'react-router-dom'
 import Signup from './Components/Signup/Signup'
 import Login from './Components/Login/Login'
 import Profile from './Components/Profile/Profile'
-import LoginSignupSelection from './Components//LoginSignupSelection/LoginSignupSelection'
 import Navbar from './Components/Navbar/Navbar'
+import Chatroomscontainer from './Components/Chatrooms/Chatroomscontainer'
 import './App.css';
 
 export class App extends Component{
   state = {
     //Without using redux, we need local state to store the user object.
     currentUser: {},
-    currentToken:''
+    currentToken:'',
+    chatRooms:[]
 
   }
   componentDidMount(){
@@ -31,6 +32,15 @@ export class App extends Component{
             })
           })
         }
+        
+      // Fetch rooms
+      fetch(`http://localhost:3000/rooms`)
+      .then(res => res.json())
+      .then(chatRooms => {
+          this.setState({
+            chatRooms
+          })
+      })
   }
 
   handleLoginOnAppJS = (username,password) =>{
@@ -64,8 +74,8 @@ export class App extends Component{
     <div className="App">
         <Navbar currentUser={this.state.currentUser}/>
         <Switch>
-          <Route exact path = '/' component = { LoginSignupSelection }/>
           <Route path = '/signup' component = { Signup }/>
+          <Route path = '/rooms' component = { ()=> <Chatroomscontainer chatRooms={this.state.chatRooms}/>}/>
           <Route path = '/login' component = { ()=> <Login handleLoginOnAppJS = {this.handleLoginOnAppJS} />}/>
           <Route path = '/:id/profile' component = { () => <Profile currentUser = {this.state.currentUser}/>}/>
         </Switch>

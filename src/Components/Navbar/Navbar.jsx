@@ -13,7 +13,13 @@ export class Navbar extends Component {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                        <li class="nav-item active">
+                        <li>
+                              <Link className='nav-link' to ='/signup'>Signup</Link>
+                        </li>
+                        <li>
+                             <Link className='nav-link' to ='/login'>Login</Link>
+                        </li>
+                        <li >
                             <Link className='nav-link' to={`/${this.props.currentUser.id}/profile`}>Profile</Link>
                         </li>
                         <li class="nav-item">
