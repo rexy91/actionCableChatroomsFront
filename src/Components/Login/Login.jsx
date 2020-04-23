@@ -13,15 +13,13 @@ export class Login extends Component {
         e.preventDefault()
         const username = e.target.username.value
         const password = e.target.password.value
-
         this.props.handleLoginOnAppJS(username,password)
         this.setState({
             username:'',
             password:''
         })
-        this.props.history.push('/home')
+        // this.props.history.push('/home')
     }   
-
     handleOnchange = (e) => {
         this.setState({
             [e.target.name]:e.target.value
