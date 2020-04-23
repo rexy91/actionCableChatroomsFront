@@ -5,6 +5,7 @@ import Signup from './Components/Signup/Signup'
 import Login from './Components/Login/Login'
 import Profile from './Components/Profile/Profile'
 import LoginSignupSelection from './Components//LoginSignupSelection/LoginSignupSelection'
+import Navbar from './Components/Navbar/Navbar'
 import './App.css';
 
 export class App extends Component{
@@ -61,7 +62,7 @@ export class App extends Component{
   render(){
   return (
     <div className="App">
-
+        <Navbar/>
         <Switch>
           <Route exact path = '/' component = { LoginSignupSelection }/>
           <Route path = '/signup' component = { Signup }/>
