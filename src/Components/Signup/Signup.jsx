@@ -15,12 +15,8 @@ export class Signup extends Component {
     
     handlesignup = (e) => {
         e.preventDefault()
-        const first_name = e.target.firstname.value
-        const last_name = e.target.lastname.value
         const username = e.target.username.value
         const password = e.target.password.value
-        console.log('gere')
-        e.preventDefault()
         fetch('http://localhost:3000/users', {
             method: "POST",
             headers: {
@@ -28,8 +24,8 @@ export class Signup extends Component {
               Accept: 'application/json'
             },
             body: JSON.stringify(
-                {first_name,
-                last_name,
+                {
+
                 username,
                 password}
                 )
@@ -59,6 +55,7 @@ export class Signup extends Component {
                                value={this.state.username}
                                onChange = {this.handleOnchange}
                         />
+
                         </Form.Field>
                         <Form.Field>
                         <label>Password</label>
