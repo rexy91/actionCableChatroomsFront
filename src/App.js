@@ -6,6 +6,8 @@ import Login from './Components/Login/Login'
 import Profile from './Components/Profile/Profile'
 import Navbar from './Components/Navbar/Navbar'
 import Chatroomscontainer from './Components/Chatrooms/Chatroomscontainer'
+import ChatroomContent from './Components/Chatrooms/ChatroomContent/ChatroomContent'
+
 import './App.css';
 
 export class App extends Component{
@@ -43,6 +45,7 @@ export class App extends Component{
       })
   }
 
+
   handleLoginOnAppJS = (username,password) =>{
     fetch(`http://localhost:3000/login`, {
       method:'POST',
@@ -69,12 +72,14 @@ export class App extends Component{
   }
   })}
 
+
   render(){
   return (
     <div className="App">
         <Navbar currentUser={this.state.currentUser}/>
         <Switch>
           <Route path = '/signup' component = { Signup }/>
+          <Route path = '/rooms/:id' component = { ()=> <ChatroomContent chatRoom={this.state.currentChatRoom}/>}/>
           <Route path = '/rooms' component = { ()=> <Chatroomscontainer chatRooms={this.state.chatRooms}/>}/>
           <Route path = '/login' component = { ()=> <Login handleLoginOnAppJS = {this.handleLoginOnAppJS} />}/>
           <Route path = '/:id/profile' component = { () => <Profile currentUser = {this.state.currentUser}/>}/>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Chatroomscontainer.css'
-import {Row, Col, Container} from 'react-bootstrap'
+import {Row, Col, Container,fluid} from 'react-bootstrap'
 import ChatroomInfo from '../Chatrooms/ChatroomInfo/ChatroomInfo'
 
 export class Chatroomscontainer extends Component {
@@ -17,7 +17,7 @@ export class Chatroomscontainer extends Component {
             <div className='chatroomscontainer'>
                     <h5>All Rooms:</h5>
                     {/* Now render each room component with a loop  */}
-                    <Container>
+                    <Container fluid>
                     <Row>
                         {chatRoomsMapper}
                     </Row>
