@@ -7,7 +7,6 @@ import Profile from './Components/Profile/Profile'
 import Navbar from './Components/Navbar/Navbar'
 import Chatroomscontainer from './Components/Chatrooms/Chatroomscontainer'
 import ChatroomContent from './Components/Chatrooms/ChatroomContent/ChatroomContent'
-
 import './App.css';
 
 export class App extends Component{
@@ -16,7 +15,6 @@ export class App extends Component{
     currentUser: {},
     currentToken:'',
     chatRooms:[]
-
   }
   componentDidMount(){
         if (localStorage.getItem('token')){
@@ -71,15 +69,21 @@ export class App extends Component{
     alert('invalid username or password')
   }
   })}
-
-
+  
   render(){
+    console.log(this.props)
   return (
     <div className="App">
         <Navbar currentUser={this.state.currentUser}/>
         <Switch>
           <Route path = '/signup' component = { Signup }/>
-          <Route path = '/rooms/:id' component = { ()=> <ChatroomContent chatRoom={this.state.currentChatRoom}/>}/>
+          <Route path = '/rooms/:id' component = { ()=> 
+          // Chatroomcontent component needs all these info 
+          <ChatroomContent 
+          chatRoom={this.state.currentChatRoom}
+          CableApp={this.props.CableApp}
+          currentUser={this.state.currentUser}
+          />}/>
           <Route path = '/rooms' component = { ()=> <Chatroomscontainer chatRooms={this.state.chatRooms}/>}/>
           <Route path = '/login' component = { ()=> <Login handleLoginOnAppJS = {this.handleLoginOnAppJS} />}/>
           <Route path = '/:id/profile' component = { () => <Profile currentUser = {this.state.currentUser}/>}/>
