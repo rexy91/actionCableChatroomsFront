@@ -32,7 +32,7 @@ export class ChatroomContent extends Component {
 
     render() {
         return (
-            <div>
+            <div className='chatroomContent'>
                 <h5>Welcome to the {this.state.currentRoom.name} chatroom</h5>
                 <div className='chatContentContainer'>
 

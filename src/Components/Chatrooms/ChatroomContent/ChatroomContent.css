@@ -5,4 +5,13 @@
 }
 .newMessageBox{
     border: solid 1px;
+    height: 7vh;
+}
+
+/* anything above 767, apply  */
+@media(min-width:769px){
+.chatroomContent{
+    /* width: 80vw; */
+    margin-right: 40vw;
+}
 }
