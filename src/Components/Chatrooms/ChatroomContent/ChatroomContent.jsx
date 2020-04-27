@@ -48,6 +48,7 @@ export class ChatroomContent extends Component {
                 </div>
                 <RoomWebSocket
                 CableApp = {this.props.CableApp}
+                currentRoom = {this.state.currentRoom}
                 />
             </div>
         )
