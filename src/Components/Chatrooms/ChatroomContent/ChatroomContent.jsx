@@ -46,6 +46,7 @@ export class ChatroomContent extends Component {
                     </Form.Group>
                     <button>Send</button>
                 </Form>
+                <ActionCableConsumer channel = {{channel: 'MessengerChannel', convoId: this.props.convo.id}} onReceived = {} />
                 </div>
                 {/* <RoomWebSocket
                 CableApp = {this.props.CableApp}
