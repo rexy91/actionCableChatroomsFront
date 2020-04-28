@@ -9,6 +9,7 @@
     "actioncable": "^5.2.4-2",
     "bootstrap": "^4.4.1",
     "react": "^16.13.1",
+    "react-actioncable-provider": "^2.0.0",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.1.2",

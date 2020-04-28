@@ -14,7 +14,7 @@ ReactDOM.render(
   <Router>
   <React.StrictMode>
     {/* <App CableApp={CableApp}/> */}
-    <App CableApp={CableApp}/>
+    <App/>
   </React.StrictMode>
   </Router>,
   document.getElementById('root')
