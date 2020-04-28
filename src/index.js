@@ -4,15 +4,16 @@ import './index.css';
 import App from './App';
 import {BrowserRouter as Router } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import actionCable from 'actioncable'
+// import actionCable from 'actioncable'
 
-const CableApp = {}
+// const CableApp = {}
 
-CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
+// CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
 
 ReactDOM.render(
   <Router>
   <React.StrictMode>
+    {/* <App CableApp={CableApp}/> */}
     <App CableApp={CableApp}/>
   </React.StrictMode>
   </Router>,

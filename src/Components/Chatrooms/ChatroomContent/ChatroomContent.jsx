@@ -3,6 +3,7 @@ import './ChatroomContent.css'
 import {withRouter} from 'react-router-dom'
 import RoomWebSocket from '../RoomWebSocket/RoomWebSocket'
 import {Form,Button} from 'react-bootstrap'
+import {ActionCableConsumer} from 'react-actioncable-provider'
 
 export class ChatroomContent extends Component {
     state={
@@ -46,10 +47,10 @@ export class ChatroomContent extends Component {
                     <button>Send</button>
                 </Form>
                 </div>
-                <RoomWebSocket
+                {/* <RoomWebSocket
                 CableApp = {this.props.CableApp}
                 currentRoom = {this.state.currentRoom}
-                />
+                /> */}
             </div>
         )
     }

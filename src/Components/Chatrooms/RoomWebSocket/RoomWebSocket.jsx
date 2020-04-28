@@ -5,7 +5,7 @@ export class RoomWebSocket extends Component {
     componentDidMount(){
         this.props.CableApp.room = this.props.CableApp.cable.subscriptions.create({
             channel: 'RoomsChannel',
-            room: this.props.currentRoom.id
+            room: this.props.currentRoom.ico
         }
         )
     }
