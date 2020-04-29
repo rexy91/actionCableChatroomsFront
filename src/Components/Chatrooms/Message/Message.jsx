@@ -3,10 +3,12 @@ import '../Message/Message.css'
 
 export class Message extends Component {
     render() {
-        console.log(this.props.message)
+        const {content} = this.props.message
+        const {username} = this.props.message.user
         return (
-            <div className='singleMessage'>
-                {this.props.message.content}
+            <div className='singleMessage' style={{marginBottom:'10px'}}>
+                <p>{username}:</p>
+                <p style={{marginTop:'-15px'}}>{content}</p>
             </div>
         )
     }
