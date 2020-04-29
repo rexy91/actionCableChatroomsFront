@@ -7,8 +7,8 @@ export class Message extends Component {
         const {username} = this.props.message.user
         return (
             <div className='singleMessage' style={{marginBottom:'10px'}}>
-                <p>{username}:</p>
-                <p style={{marginTop:'-15px'}}>{content}</p>
+                <p style={{marginBottom:'3px'}}>{username}:</p>
+                <p id='content' style={{marginTop:'-15px'}}>{content}</p>
             </div>
         )
     }
