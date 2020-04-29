@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import RoomWebSocket from '../RoomWebSocket/RoomWebSocket'
 import {Form,Button} from 'react-bootstrap'
 import {ActionCableConsumer} from 'react-actioncable-provider'
+import Message from '../Message/Message'
 
 export class ChatroomContent extends Component {
     state={
@@ -33,11 +34,11 @@ export class ChatroomContent extends Component {
     }
 
     render() {
+        
         return (
             <div className='chatroomContent'>
                 <h5>Welcome to the {this.state.currentRoom.name} chatroom</h5>
                 <div className='chatContentContainer'>
-
                 </div>
                 <div className='newMessageBox'>
                 <Form>
