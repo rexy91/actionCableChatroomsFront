@@ -8,7 +8,11 @@ import Message from '../Message/Message'
 
 export class ChatroomContent extends Component {
     state={
-        currentRoom:{}
+        currentRoom:{
+            id:null,
+            name:null,
+            messages:[]
+        },
     }
     componentDidMount(){
         //get current room info
@@ -17,7 +21,7 @@ export class ChatroomContent extends Component {
         .then(res => res.json())
         .then(currentRoom => {
                 this.setState({
-                    currentRoom
+                    currentRoom,   
                 })
         })
     }
@@ -28,17 +32,23 @@ export class ChatroomContent extends Component {
         .then(res => res.json())
         .then(currentRoom => {
                 this.setState({
-                    currentRoom
+                    currentRoom:{
+                        id:currentRoom.id,
+                        name:currentRoom.name,
+                        messages:currentRoom.messages
+                    }
                 })
-        })
-    }
-
+        })}
+    
     render() {
-        
+        const renderRoomMessages = this.state.currentRoom?.room?.messages?.map(message => {
+                 return <Message key={message.id} message={message} />
+        })
         return (
             <div className='chatroomContent'>
                 <h5>Welcome to the {this.state.currentRoom.name} chatroom</h5>
                 <div className='chatContentContainer'>
+                    {renderRoomMessages}
                 </div>
                 <div className='newMessageBox'>
                 <Form>
@@ -49,10 +59,6 @@ export class ChatroomContent extends Component {
                 </Form>
                 <ActionCableConsumer channel = {{channel: 'RoomsChannel', room:'this is the room'}}  />
                 </div>
-                {/* <RoomWebSocket
-                CableApp = {this.props.CableApp}
-                currentRoom = {this.state.currentRoom}
-                /> */}
             </div>
         )
     }
