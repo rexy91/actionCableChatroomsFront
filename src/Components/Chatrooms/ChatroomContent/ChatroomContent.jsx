@@ -41,6 +41,7 @@ export class ChatroomContent extends Component {
         })}
     
     render() {
+        // console.log(this.state.currentRoom?.room?.id)
         const renderRoomMessages = this.state.currentRoom?.room?.messages?.map(message => {
                  return <Message key={message.id} message={message} />
         })
@@ -57,7 +58,7 @@ export class ChatroomContent extends Component {
                     </Form.Group>
                     <button>Send</button>
                 </Form>
-                <ActionCableConsumer channel = {{channel: 'RoomsChannel', room:'this is the room'}}  />
+                <ActionCableConsumer channel = {{channel: 'RoomsChannel', room:this.state.currentRoom?.room?.id}}  />
                 </div>
             </div>
         )
