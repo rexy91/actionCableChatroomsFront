@@ -39,7 +39,26 @@ export class ChatroomContent extends Component {
                     }
                 })
         })}
-    
+
+    newMessage = (e) => {
+        e.preventDefault()
+        const content = e.target.message.value
+        fetch(`http://localhost:3000/messages`, {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                Accept:'application/json'
+            },
+            body:JSON.stringify({
+                content,
+                roomId: this.state.currentRoom.room.id,
+                userId: this.props.currentUser.id
+            })
+        })
+        .then(res => res.json())
+        .then(console.log)
+    }
+
     render() {
         // console.log(this.state.currentRoom?.room?.id)
         const renderRoomMessages = this.state.currentRoom?.room?.messages?.map(message => {
@@ -52,9 +71,9 @@ export class ChatroomContent extends Component {
                     {renderRoomMessages}
                 </div>
                 <div className='newMessageBox'>
-                <Form>
+                <Form onSubmit = {this.newMessage}>
                     <Form.Group >
-                    <Form.Control type="email" placeholder="type a message" />
+                    <Form.Control type="text" name='message' placeholder="type a message" />
                     </Form.Group>
                     <button>Send</button>
                 </Form>
