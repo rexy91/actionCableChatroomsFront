@@ -51,8 +51,8 @@ export class ChatroomContent extends Component {
             },
             body:JSON.stringify({
                 content,
-                roomId: this.state.currentRoom.room.id,
-                userId: this.props.currentUser.id
+                room_id: this.state.currentRoom.room.id,
+                user_id: this.props.currentUser.id
             })
         })
         .then(res => res.json())
