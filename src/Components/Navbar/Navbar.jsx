@@ -20,7 +20,7 @@ export class Navbar extends Component {
                              <Link className='nav-link' to ='/login'>Login</Link>
                         </li>
                         <li >
-                            <Link className='nav-link' to={`/${this.props.currentUser.id}/profile`}>Profile</Link>
+                            <Link className='nav-link' to={`/${this.props?.currentUser?.id}/profile`}>Profile</Link>
                         </li>
                         <li class="nav-item">
                             <Link className='nav-link' to='/rooms'>Rooms</Link>
