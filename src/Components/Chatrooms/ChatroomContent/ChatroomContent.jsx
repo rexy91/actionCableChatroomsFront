@@ -14,6 +14,7 @@ export class ChatroomContent extends Component {
             messages:[]
         },
     }
+
     componentDidMount(){
         //get current room info
         const currentRoomId = this.props.match.params.id
@@ -56,7 +57,18 @@ export class ChatroomContent extends Component {
             })
         })
         .then(res => res.json())
-        .then(console.log)
+        .then(newMessage => {
+            this.setState({
+                currentRoom:{
+                    id:{...this.state.currentRoom.room}
+                }
+            })
+            console.log(this.state)
+        })
+    }
+
+    handleOnReceived = (broadcastInfoFrombackend) => {
+        console.log('here', broadcastInfoFrombackend)
     }
 
     render() {
@@ -77,7 +89,8 @@ export class ChatroomContent extends Component {
                     </Form.Group>
                     <button>Send</button>
                 </Form>
-                <ActionCableConsumer channel = {{channel: 'RoomsChannel', room:this.state.currentRoom?.room?.id}}  />
+                <ActionCableConsumer 
+                channel = {{channel: 'RoomsChannel', room:this.state.currentRoom?.room?.id}} onReceived = {this.handleOnReceived}  />
                 </div>
             </div>
         )
