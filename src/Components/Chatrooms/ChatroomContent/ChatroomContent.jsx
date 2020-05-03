@@ -84,6 +84,7 @@ export class ChatroomContent extends Component {
                     <Form.Control type="text" name='message' placeholder="type a message" />
                     </Form.Group>
                     <button>Send</button>
+                    
                 </Form>
                 <ActionCableConsumer 
                 channel = {{channel: 'RoomsChannel', room:this.state.currentRoom?.room?.id}} onReceived = {this.handleOnReceived}  />
