@@ -8,11 +8,7 @@ import Message from '../Message/Message'
 
 export class ChatroomContent extends Component {
     state={
-        currentRoom:{
-            id:null,
-            name:null,
-            messages:[]
-        },
+        currentRoom:{}
     }
 
     componentDidMount(){
@@ -27,19 +23,20 @@ export class ChatroomContent extends Component {
         })
     }
 
-    getRoomData = () => {
-        const currentRoomId = this.props.match.params.id
-        fetch(`http://localhost:3000/rooms/${currentRoomId}`)
-        .then(res => res.json())
-        .then(currentRoom => {
-                this.setState({
-                    currentRoom:{
-                        id:currentRoom.id,
-                        name:currentRoom.name,
-                        messages:currentRoom.messages
-                    }
-                })
-        })}
+    // getRoomData = () => {
+    //     const currentRoomId = this.props.match.params.id
+    //     fetch(`http://localhost:3000/rooms/${currentRoomId}`)
+    //     .then(res => res.json())
+    //     .then(currentRoom => {
+    //             console.log(currentRoom)
+    //             this.setState({
+    //                 currentRoom:{
+    //                     id:currentRoom.id,
+    //                     name:currentRoom.name,
+    //                     messages:currentRoom.messages
+    //                 }
+    //             })
+    //     })}
 
     newMessage = (e) => {
         e.preventDefault()
@@ -57,18 +54,17 @@ export class ChatroomContent extends Component {
             })
         })
         .then(res => res.json())
-        .then(newMessage => {
-            this.setState({
-                currentRoom:{
-                    id:{...this.state.currentRoom.room}
-                }
-            })
-            console.log(this.state)
+        .then(respond => {
+            // this.setState({
+            //     currentRoom:{
+            //         id:{...this.state.currentRoom.room}
+            //     }
+            // })
         })
     }
 
     handleOnReceived = (broadcastInfoFrombackend) => {
-        console.log('here', broadcastInfoFrombackend)
+        console.log('BraodcastedMessage', broadcastInfoFrombackend)
     }
 
     render() {
@@ -78,7 +74,7 @@ export class ChatroomContent extends Component {
         })
         return (
             <div className='chatroomContent'>
-                <h5>Welcome to the {this.state.currentRoom.name} chatroom</h5>
+                <h5>Welcome to the {this.state.currentRoom?.room?.name} chatroom</h5>
                 <div className='chatContentContainer'>
                     {renderRoomMessages}
                 </div>
