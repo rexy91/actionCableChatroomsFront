@@ -65,6 +65,8 @@ export class ChatroomContent extends Component {
 
     handleOnReceived = (broadcastInfoFrombackend) => {
         console.log('BraodcastedMessage', broadcastInfoFrombackend)
+        console.log(...this.state)
+        
     }
 
     render() {
