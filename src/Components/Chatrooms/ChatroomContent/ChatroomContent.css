@@ -2,6 +2,7 @@
     height: 80vh;
     border: solid 1px;
     background-color: rgb(238, 234, 234);
+    overflow-y: scroll;
 }
 .newMessageBox{
     /* border: solid 1px; */
