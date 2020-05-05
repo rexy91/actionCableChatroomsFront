@@ -8,7 +8,8 @@ import Message from '../Message/Message'
 
 export class ChatroomContent extends Component {
     state={
-        currentRoom:{}
+        currentRoom:{},
+        currentRoomMessages:[]
     }
 
     componentDidMount(){
@@ -18,7 +19,8 @@ export class ChatroomContent extends Component {
         .then(res => res.json())
         .then(currentRoom => {
                 this.setState({
-                    currentRoom,   
+                    currentRoom,
+                    currentRoomMessages:currentRoom.room.messages 
                 })
         })
     }
@@ -64,15 +66,24 @@ export class ChatroomContent extends Component {
     }
 
     handleOnReceived = (broadcastInfoFrombackend) => {
+        // here broadcastInfoFrombackend is the message object. 
         console.log('BraodcastedMessage', broadcastInfoFrombackend)
-        console.log(...this.state)
-        
+        const newMessage = broadcastInfoFrombackend
+        // Make a fetch so we can get back the message obj, as the same obj type inside our current state 's message array.
+        fetch(`http://localhost:3000/messages/${broadcastInfoFrombackend.id}`)
+        .then(res => res.json())
+        .then(newaddMessageObj => {
+            this.setState({
+                currentRoomMessages:[...this.state.currentRoomMessages, newaddMessageObj]
+            })
+        })
+        console.log(this.state.currentRoomMessages)
     }
 
     render() {
         // console.log(this.state.currentRoom?.room?.id)
-        const renderRoomMessages = this.state.currentRoom?.room?.messages?.map(message => {
-                 return <Message key={message.id} message={message} />
+        const renderRoomMessages = this.state.currentRoomMessages?.map(message => {
+                 return <Message  key={message.id} message={message}/>
         })
         return (
             <div className='chatroomContent'>
